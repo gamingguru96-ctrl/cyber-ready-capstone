@@ -4,7 +4,7 @@ Prepared for Cody Webb
 ITCC298 Final Capstone Project
 
 CURRENT WEBSITE
-[https://cyberready-cody-webb-capstone.loftyant129.chatgpt.site](https://gamingguru96-ctrl.github.io/cyber-ready-capstone/)
+(https://gamingguru96-ctrl.github.io/cyber-ready-capstone/)
 
 CONTENTS
 - index.html: Home page
