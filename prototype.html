@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Complete the CyberReady cybersecurity readiness assessment and receive a score, category results, and prioritized recommendations.">
+  <title>Application Prototype | CyberReady</title>
+  <link rel="icon" href="assets/cyberready-shield.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="prototype">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="index.html"><img src="assets/cyberready-shield.png" alt=""><span>CyberReady</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+        <a href="index.html" data-page="home">Home</a><a href="about.html" data-page="about">About You</a><a href="prototype.html" data-page="prototype">Prototype</a><a href="marketing.html" data-page="marketing">Marketing</a><a href="guide.html" data-page="guide">User Guide</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Application prototype</p>
+        <h1>How CyberReady works</h1>
+        <p class="lead">A guided browser-based assessment converts current security practices into an overall score, category results, and prioritized actions.</p>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container split">
+        <div class="how-it-works">
+          <p class="section-label">Assessment workflow</p>
+          <ol class="step-list">
+            <li><strong>Review the scope</strong><span>Read the privacy and safe-use notice before starting.</span></li>
+            <li><strong>Answer each question</strong><span>Choose Yes, No, or Not sure based on current practices.</span></li>
+            <li><strong>Review and revise</strong><span>Use Back and Next to confirm every response before submitting.</span></li>
+            <li><strong>View the action plan</strong><span>Use category results and priority recommendations to plan improvements.</span></li>
+          </ol>
+        </div>
+        <div class="image-frame"><img src="assets/assessment-preview.png" alt="Illustrative CyberReady assessment screen with Yes, No, and Not sure choices"></div>
+      </div>
+    </section>
+
+    <section class="section" id="assessment">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-label">Working prototype</p>
+          <h2>Cybersecurity readiness assessment</h2>
+          <p>Complete 14 questions covering seven baseline security categories. The prototype processes responses in this browser and does not transmit or store them on a server.</p>
+        </div>
+
+        <div class="assessment-shell">
+          <div class="assessment-topbar">
+            <div class="assessment-brand"><img src="assets/cyberready-shield.png" alt=""><span>CyberReady Assessment</span></div>
+            <div class="assessment-count" id="question-count">Ready to begin</div>
+          </div>
+
+          <div class="assessment-body" id="assessment-intro">
+            <div class="assessment-intro">
+              <h2>Before you begin</h2>
+              <p>Set aside about 5 to 10 minutes. Answer based on current behavior, not the result you hope to achieve. Choose “Not sure” when a setting or practice needs verification.</p>
+              <div class="notice"><strong>Protect sensitive information.</strong> Never enter passwords, authentication codes, encryption keys, financial details, classified information, or controlled unclassified information. CyberReady asks only whether a safeguard is in place.</div>
+              <p>This educational prototype does not certify compliance, guarantee security, scan devices, or replace a qualified cybersecurity assessment.</p>
+              <button class="btn btn-primary" id="start-assessment" type="button">Start Assessment</button>
+            </div>
+          </div>
+
+          <div class="assessment-body hidden" id="question-view">
+            <div class="progress-track" role="progressbar" aria-label="Assessment progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar" id="progress-bar"></div></div>
+            <div class="question-meta"><strong id="category-name">Category</strong><span>Choose the answer that best reflects current practice.</span></div>
+            <h2 class="question-title" id="question-title" tabindex="-1"></h2>
+            <p class="question-help" id="question-help"></p>
+            <fieldset style="border:0;padding:0;margin:0">
+              <legend class="hidden">Select one response</legend>
+              <div class="answer-grid">
+                <div class="answer-choice yes"><input type="radio" name="answer" id="answer-yes" value="yes"><label for="answer-yes"><strong>Yes</strong><span>The practice is consistently in place.</span></label></div>
+                <div class="answer-choice no"><input type="radio" name="answer" id="answer-no" value="no"><label for="answer-no"><strong>No</strong><span>The practice is not currently in place.</span></label></div>
+                <div class="answer-choice unsure"><input type="radio" name="answer" id="answer-unsure" value="unsure"><label for="answer-unsure"><strong>Not sure</strong><span>Verification is needed before treating it as implemented.</span></label></div>
+              </div>
+            </fieldset>
+            <p class="validation-message" id="validation-message" aria-live="polite"></p>
+            <div class="assessment-actions">
+              <button class="btn btn-quiet" id="back-button" type="button">Back</button>
+              <div class="right-actions"><a class="btn btn-quiet" href="guide.html#response-guide">Response Guide</a><button class="btn btn-primary" id="next-button" type="button">Next</button></div>
+            </div>
+          </div>
+
+          <div class="assessment-body hidden" id="result-view">
+            <div class="result-header">
+              <div class="score-ring" id="score-ring"><div class="score-value" id="score-value">0<small>/100</small></div></div>
+              <div class="result-copy">
+                <p class="section-label">CyberReady results</p>
+                <h2 id="results-title" tabindex="-1">Your readiness overview</h2>
+                <span class="result-band" id="result-band">Developing</span>
+                <p id="result-summary"></p>
+              </div>
+            </div>
+            <div class="result-grid">
+              <section class="result-panel"><h3>Category results</h3><div id="category-results"></div></section>
+              <section class="result-panel"><h3>Priority recommendations</h3><ol class="recommendations" id="recommendation-list"></ol></section>
+            </div>
+            <div class="notice"><strong>Interpret results carefully.</strong> The score is a directional learning aid, not proof that a person, device, or organization is secure. Validate recommendations before changing managed systems.</div>
+            <div class="result-actions">
+              <button class="btn btn-secondary" id="review-answers" type="button">Review Answers</button>
+              <button class="btn btn-quiet" id="print-results" type="button">Print Results</button>
+              <button class="btn btn-danger" id="retake-assessment" type="button">Clear and Retake</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-mint">
+      <div class="container">
+        <div class="section-heading"><p class="section-label">Technical overview</p><h2>Designed for current desktop and mobile browsers</h2><p>CyberReady uses standard web technologies and runs without an account, database, or specialized hardware.</p></div>
+        <div class="spec-grid">
+          <article class="spec-card"><h3>Client requirements</h3><p>Minimum 4 GB RAM, stable internet access, a display of at least 720p, and a current Chrome, Edge, Firefox, or Safari browser.</p></article>
+          <article class="spec-card"><h3>Privacy approach</h3><p>The prototype processes assessment responses locally in the browser. It does not request names, passwords, account details, or other secret values.</p></article>
+          <article class="spec-card"><h3>Accessibility</h3><p>Semantic headings, keyboard-operable controls, visible focus, readable contrast, responsive layouts, and browser zoom support the intended experience.</p></article>
+          <article class="spec-card"><h3>Prototype limits</h3><p>The application provides educational guidance. It does not perform scanning, penetration testing, compliance certification, or incident response.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid"><div><p class="footer-title">CyberReady</p><p>Educational cybersecurity self-assessment for individuals and small organizations.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="marketing.html">Marketing</a><a href="guide.html">User Guide</a></nav></div>
+    <div class="container footer-bottom">CyberReady prototype by Cody Webb for ITCC298. Educational guidance only. © <span data-year></span>.</div>
+  </footer>
+  <script src="common.js"></script>
+  <script src="assessment.js"></script>
+</body>
+</html>
